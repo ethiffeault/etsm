@@ -1,4 +1,4 @@
-﻿namespace etsm
+﻿namespace Etsm
 {
     public interface IState
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using etsm;
+using Etsm;
 using System;
 
 namespace tick
 {
-    public class State : etsm.State
+    public class State : Etsm.State
     {
         public Action? Tick { get; private set; }
 
@@ -17,18 +17,18 @@ namespace tick
 
     public class Foo
     {
-        public StateMachine<State> StateMachine { get; private set; }
-        public State StateA { get; private set; }
-        public State StateB { get; private set; }
+        private StateMachine<State> stateMachine;
+        private State stateA;
+        private State stateB;
 
-        public int tickStateA = 0;
-        public int tickStateB = 0;
+        private int tickStateA = 0;
+        private int tickStateB = 0;
 
         public Foo()
         {
-            StateMachine = new StateMachine<State>();
-            StateA = new State(null, null, TickA);
-            StateB = new State(null, null, TickB);
+            stateMachine = new StateMachine<State>();
+            stateA = new State(null, null, TickA);
+            stateB = new State(null, null, TickB);
         }
 
         private void TickA()
@@ -40,6 +40,31 @@ namespace tick
         {
             ++tickStateB;
         }
+
+        public void Test()
+        {
+            Assert.IsTrue(stateMachine.IsIn(null));
+            Assert.AreEqual(0, tickStateA);
+            Assert.AreEqual(0, tickStateB);
+
+            stateMachine.Transition(stateA);
+            Assert.IsTrue(stateMachine.IsIn(stateA));
+            stateMachine.CurrentState?.Tick?.Invoke();
+            Assert.AreEqual(1, tickStateA);
+            Assert.AreEqual(0, tickStateB);
+
+            stateMachine.Transition(stateB);
+            Assert.IsTrue(stateMachine.IsIn(stateB));
+            stateMachine.CurrentState?.Tick?.Invoke();
+            Assert.AreEqual(1, tickStateA);
+            Assert.AreEqual(1, tickStateB);
+
+            stateMachine.Transition(null);
+            Assert.IsTrue(stateMachine.IsIn(null));
+            stateMachine.CurrentState?.Tick?.Invoke();
+            Assert.AreEqual(1, tickStateA);
+            Assert.AreEqual(1, tickStateB);
+        }
     }
 
     [TestClass]
@@ -49,28 +74,7 @@ namespace tick
         public void Test()
         {
             Foo foo = new Foo();
-
-            Assert.IsTrue(foo.StateMachine.IsIn(null)); 
-            Assert.AreEqual(0, foo.tickStateA);
-            Assert.AreEqual(0, foo.tickStateB);
-
-            foo.StateMachine.Transition(foo.StateA);
-            Assert.IsTrue(foo.StateMachine.IsIn(foo.StateA));
-            foo.StateMachine.CurrentState?.Tick?.Invoke();
-            Assert.AreEqual(1, foo.tickStateA);
-            Assert.AreEqual(0, foo.tickStateB);
-
-            foo.StateMachine.Transition(foo.StateB);
-            Assert.IsTrue(foo.StateMachine.IsIn(foo.StateB));
-            foo.StateMachine.CurrentState?.Tick?.Invoke();
-            Assert.AreEqual(1, foo.tickStateA);
-            Assert.AreEqual(1, foo.tickStateB);
-
-            foo.StateMachine.Transition(null);
-            Assert.IsTrue(foo.StateMachine.IsIn(null));
-            foo.StateMachine.CurrentState?.Tick?.Invoke();
-            Assert.AreEqual(1, foo.tickStateA);
-            Assert.AreEqual(1, foo.tickStateB);
+            foo.Test();
         }
     }
 }
