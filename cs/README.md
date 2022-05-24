@@ -4,6 +4,18 @@
 # c# etsm
 Tiny state machine for c#, see [etsm](https://github.com/ethiffeault/etsm)
 
+# Install
+
+Edit your vcproj and add:
+  <ItemGroup>
+    <PackageReference Include="etsm" Version="x.y.z" />
+  </ItemGroup>
+latest version: [![NuGet](https://img.shields.io/nuget/v/etsm.svg)](https://www.nuget.org/packages/etsm)
+
+Or
+
+Add this file directly into your project: [etsm](https://github.com/ethiffeault/etsm/blob/main/cs/etsm/etsm.cs)
+
 # Example
 
 ## Simple
