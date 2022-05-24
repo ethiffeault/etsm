@@ -1,9 +1,9 @@
 [package]
 name = "etsm"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Eric Thiffeault <ethiffeault@gmail.com>"]
-description = "Efficient Tiny State Machine using object callbacks and virtual state methods."
+description = "Efficient Tiny State Machine using object callbacks."
 repository = "https://github.com/ethiffeault/etsm"
 license = "MIT"
 keywords = ["state", "statemachine", "finite", "fsm", "sm"]
