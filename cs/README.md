@@ -109,5 +109,5 @@ full sample [here](test/simple.cs)
         }
     }
 ```
-
+Output: " A   B "\
 full sample [here](test/virtual_call.cs)
