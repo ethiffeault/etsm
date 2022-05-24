@@ -4,26 +4,57 @@ Tiny state machine for c#, see [etsm](../../../../)
 # Example
 
 ## Simple A B
-Declare state machine
+Declare state machine and state in your class
+```
+    public class Foo
+    {
+        private StateMachine<State> stateMachine;
+        private State stateA;
+        private State stateB;
+    ...
 ```
 
+Create them in the constructor and bind enter/exit
+```
+        public Foo()
+        {
+            stateMachine = new StateMachine<State>();
+            stateA = new State(EnterA, ExitA);
+            stateB = new State(EnterB, null);
+        }
 ```
 
-Instanciate the state machine in your struct
+Make your callback methods
 ```
-```
+        void EnterA()
+        {
+            System.Console.Write(" ->A ");
+        }
 
-Add enter/exit callbacks
-```
+        void ExitA()
+        {
+            System.Console.Write(" A-> ");
+        }
+
+        void EnterB()
+        {
+            System.Console.Write(" ->B ");
+        }
 ```
 
 Execute transitions
 ```
+        public void Run()
+        {
+            stateMachine.Transition(stateA);
+            stateMachine.Transition(stateB);
+            stateMachine.Transition(null);
+        }
 ```
 
 Output: " ->A  A-> ->B "
 
-full sample [here](tests/simple.rs)
+full sample [here](test/simple.cs)
 
 ## Virtual State Methods
 
