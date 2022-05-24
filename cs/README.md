@@ -3,7 +3,7 @@ Tiny state machine for c#, see [etsm](../../../../)
 
 # Example
 
-## Simple A B
+## Simple
 Declare state machine and state in your class
 ```
     public class Foo
