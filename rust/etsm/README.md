@@ -19,12 +19,11 @@ Add the following line to your Cargo.toml file:
 [dependencies]
 etsm = "x.y.z"
 ```
+latest version: [![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
 
 Or
 
 Add this file directly into your project: [etsm](src/lib.rs)
-
-latest: [![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
 
 # Examples
 
