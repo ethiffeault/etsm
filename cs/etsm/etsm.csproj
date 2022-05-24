@@ -4,6 +4,22 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
+    <Authors>Eric Thiffeault</Authors>
+    <Description>Efficient Tiny State Machine using object callbacks.</Description>
+    <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/ethiffeault/etsm/tree/main/cs</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/ethiffeault/etsm/tree/main/cs</RepositoryUrl>
+    <PackageTags>state, statemachine, finite, fsm, sm</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
