@@ -1,3 +1,4 @@
+[![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
 # Rust etsm
 Tiny state machine for rust, see [etsm](../../../../)
 
