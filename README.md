@@ -1,5 +1,5 @@
 # etsm
-Efficient Tiny State Machine using object callbacks and virtual state methods. Implemented in many languages. 
+Efficient Tiny State Machine using object callbacks. Implemented in many languages. 
 
 # Description
 Implement a bare bones state machine in many languages. This library aim to be simple as possible and support only basic features: 
