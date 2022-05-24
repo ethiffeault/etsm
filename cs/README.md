@@ -1,3 +1,6 @@
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![NuGet](https://img.shields.io/nuget/v/etsm.svg)](https://www.nuget.org/packages/etsm)
+
 # c# etsm
 Tiny state machine for c#, see [etsm](https://github.com/ethiffeault/etsm)
 
