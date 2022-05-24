@@ -15,7 +15,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 # Install
 
 Add the following line to your Cargo.toml file:\
-etsm = "x.y.z"\
+etsm = "x.y.z"
 
 latest: [![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
 
