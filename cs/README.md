@@ -1,5 +1,5 @@
 # c# etsm
-Tiny state machine for c#, see [etsm](../../../../)
+Tiny state machine for c#, see [etsm](../../../)
 
 # Example
 
