@@ -58,19 +58,56 @@ full sample [here](test/simple.cs)
 
 ## Virtual State Methods
 
-Declare state machine with data, you might use any type of data, view this data as static data for each state.
 ```
+    // Define your own state and add Run Action.
+    public class State : Etsm.State
+    {
+        public Action? Run { get; private set; }
+
+        public State(Action? enter, Action? exit, Action? run = null)
+            : base(enter, exit)
+        {
+            Run = run;
+        }
+    }
+
+    public class Foo
+    {
+        private StateMachine<State> stateMachine;
+        private State stateA;
+        private State stateB;
+
+        public Foo()
+        {
+            stateMachine = new StateMachine<State>();
+            stateA = new State(null, null, RunA);
+            stateB = new State(null, null, RunB);
+        }
+
+        private void RunA()
+        {
+            Console.Write(" A ");
+        }
+
+        private void RunB()
+        {
+            Console.Write(" B ");
+        }
+
+        // call run on the current state
+        private void Run()
+        {
+            stateMachine.CurrentState?.Run?.Invoke();
+        }
+
+        public void Test()
+        {
+            stateMachine.Transition(stateA);
+            Run();
+            stateMachine.Transition(stateB);
+            Run();
+        }
+    }
 ```
 
-Declare the statedata struct
-```
-```
-
-Implement Foo
-```
-```
-
-Call method run on Foo that forward it to the current state
-```
-```
-full sample [here](tests/virtual_call.rs)
+full sample [here](test/virtual_call.cs)
