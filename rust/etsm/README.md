@@ -1,8 +1,19 @@
 # Rust etsm
 Tiny state machine for rust, see [etsm](../../../../)
-# Example
 
-## Simple A B
+# Description
+Implement a bare bones state machine in many languages. This library aim to be simple as possible and support only basic features: 
+
+- states on object (owner)
+- enter/exit methods
+- virtual state methods
+- is in
+- unrestricted transitions
+- no runtime allocation
+
+# Examples
+
+## Simple
 Declare state machine
 ```
 use etsm::*;
