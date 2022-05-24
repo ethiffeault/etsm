@@ -1,3 +1,4 @@
+[![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
 # Rust etsm
 Tiny state machine for rust, see [etsm](../../../../)
 
@@ -10,6 +11,19 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - is in
 - unrestricted transitions
 - no runtime allocation
+
+# Install
+
+Add the following line to your Cargo.toml file:
+```
+[dependencies]
+etsm = "x.y.z"
+```
+latest version: [![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
+
+Or
+
+Add this file directly into your project: [etsm](src/lib.rs)
 
 # Examples
 
