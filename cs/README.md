@@ -1,5 +1,5 @@
 # c# etsm
-Tiny state machine for c#, see [etsm](../../../)
+Tiny state machine for c#, see [etsm](https://github.com/ethiffeault/etsm)
 
 # Example
 
@@ -54,7 +54,7 @@ Execute transitions
 
 Output: " ->A  A-> ->B "
 
-full sample [here](test/simple.cs)
+full sample [here](https://github.com/ethiffeault/etsm/blob/main/cs/test/simple.cs)
 
 ## Virtual State Methods
 
@@ -110,4 +110,4 @@ full sample [here](test/simple.cs)
     }
 ```
 Output: " A   B "\
-full sample [here](test/virtual_call.cs)
+full sample [here](https://github.com/ethiffeault/etsm/blob/main/cs/test/virtual_call.cs)
