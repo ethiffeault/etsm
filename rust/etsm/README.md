@@ -29,7 +29,7 @@ Add this file directly into your project: [etsm](src/lib.rs)
 
 ## Simple
 Declare state machine
-```
+```rust
 use etsm::*;
 state_machine!(
     Foo,
@@ -41,7 +41,7 @@ state_machine!(
 ```
 
 Instanciate the state machine in your struct
-```
+```rust
 struct Foo {
     state_machine: StateMachine<State>,
 }
@@ -56,7 +56,7 @@ impl Foo {
 ```
 
 Add enter/exit callbacks
-```
+```rust
 impl Foo {
     //...
     fn enter_a(&mut self) {
@@ -74,7 +74,7 @@ impl Foo {
 ```
 
 Execute transitions
-```
+```rust
     fn run(&mut self) {
         transition!(self, state_machine, Some(State::A));
         transition!(self, state_machine, Some(State::B));
@@ -89,7 +89,7 @@ full sample [here](tests/simple.rs)
 ## Virtual State Methods
 
 Declare state machine with data, you might use any type of data, view this data as static data for each state.
-```
+```rust
 state_machine!(
     Foo,
     Data,
@@ -102,14 +102,14 @@ state_machine!(
 ```
 
 Declare the statedata struct
-```
+```rust
 struct Data {
     run: fn(&mut Foo),
 }
 ```
 
 Implement Foo
-```
+```rust
 struct Foo {
     state_machine: StateMachine<State>,
 }
@@ -139,7 +139,7 @@ impl Foo {
 ```
 
 Call method run on Foo that forward it to the current state
-```
+```rust
 #[test]
 fn virtual_call() {
     let mut foo = Foo::new();
