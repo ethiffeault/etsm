@@ -3,6 +3,12 @@
 # go etsm
 Tiny state machine for go, see [etsm](https://github.com/ethiffeault/etsm)
 
+#Install
+
+Drop this file into your project [etsm.go](https://github.com/ethiffeault/etsm/blob/main/go/etsm/etsm.go)
+or
+Add this package to your go.mod
+
 # Description
 Implement a bare bones state machine in many languages. This library aim to be simple as possible and support only basic features: 
 
