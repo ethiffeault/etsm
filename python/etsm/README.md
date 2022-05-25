@@ -15,7 +15,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - no runtime allocation
 
 # Install
-include this file into your project [etsm.py]()\
+include this file into your project [etsm.py](https://github.com/ethiffeault/etsm/blob/main/python/etsm/src/etsm.py)\
 or\
 import it
 ```python
