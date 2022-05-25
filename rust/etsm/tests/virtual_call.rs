@@ -4,52 +4,76 @@ state_machine!(
     Foo,
     Data,
     State {
-        // state, enter, exit, data
-        {  A,     None,  None, Some(Data { run : Foo::run_a })},
-        {  B,     None,  None, Some(Data { run : Foo::run_b })}
+        {A, None, None, Some(Data::new(Foo::tick_a))},
+        {B, None, None, Some(Data::new(Foo::tick_b))}
     }
 );
 
 struct Data {
-    run: fn(&mut Foo),
+    tick: fn(&mut Foo),
+}
+
+impl Data {
+    fn new(tick: fn(&mut Foo)) -> Data {
+        Data { tick: tick }
+    }
 }
 
 struct Foo {
     state_machine: StateMachine<State>,
+    state_a_tick: i32,
+    state_b_tick: i32,
 }
 
 impl Foo {
     fn new() -> Foo {
         Foo {
             state_machine: StateMachine::new(),
+            state_a_tick: 0,
+            state_b_tick: 0,
         }
     }
 
-    fn run_a(&mut self) {
-        print!(" A ");
+    fn tick_a(&mut self) {
+        self.state_a_tick += 1;
     }
 
-    fn run_b(&mut self) {
-        print!(" B ");
+    fn tick_b(&mut self) {
+        self.state_b_tick += 1;
     }
 
-    fn run(&mut self) {
-        // call run on the current state
+    fn tick(&mut self) {
+        // tick the current state
         if let Some(statedata) = get_statedata(&self.state_machine) {
-            (statedata.run)(self);
+            (statedata.tick)(self);
         }
     }
 }
 
 #[test]
-fn virtual_call() {
+fn tick() {
     let mut foo = Foo::new();
 
+    assert!(foo.state_machine.is_in(None));
+    assert_eq!(foo.state_a_tick, 0);
+    assert_eq!(foo.state_b_tick, 0);
+    assert_eq!(foo.state_machine.current_state, None);
+
     transition!(&mut foo, state_machine, Some(State::A));
-    foo.run();
+    assert!(foo.state_machine.is_in(Some(State::A)));
+    foo.tick();
+    assert_eq!(foo.state_a_tick, 1);
+    assert_eq!(foo.state_b_tick, 0);
 
     transition!(&mut foo, state_machine, Some(State::B));
-    foo.run();
+    assert!(foo.state_machine.is_in(Some(State::B)));
+    foo.tick();
+    assert_eq!(foo.state_a_tick, 1);
+    assert_eq!(foo.state_b_tick, 1);
 
-    // output: A B
+    transition!(&mut foo, state_machine, None);
+    assert!(foo.state_machine.is_in(None));
+    foo.tick();
+    assert_eq!(foo.state_a_tick, 1);
+    assert_eq!(foo.state_b_tick, 1);
 }
