@@ -20,6 +20,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+using System;
+
 namespace Etsm
 {
     public interface IState
@@ -30,10 +32,10 @@ namespace Etsm
 
     public class State : IState
     {
-        private Action? enter;
-        private Action? exit;
+        private Action enter;
+        private Action exit;
 
-        public State(Action? enter, Action? exit)
+        public State(Action enter, Action exit)
         {
             this.enter = enter;
             this.exit = exit;
@@ -52,9 +54,9 @@ namespace Etsm
 
     public class StateMachine<STATE> where STATE : class, IState
     {
-        public STATE? CurrentState { get; private set; }
+        public STATE CurrentState { get; private set; }
 
-        public void Transition(STATE? state)
+        public void Transition(STATE state)
         {
             if (CurrentState != null)
                 CurrentState.Exit();
@@ -65,7 +67,7 @@ namespace Etsm
                 CurrentState.Enter();
         }
 
-        public bool IsIn(STATE? s)
+        public bool IsIn(STATE s)
         {
             return CurrentState == s;
         }

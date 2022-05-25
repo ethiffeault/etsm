@@ -7,9 +7,9 @@ namespace virtual_call
     // Define your own state and add Run Action.
     public class State : Etsm.State
     {
-        public Action? Run { get; private set; }
+        public Action Run { get; private set; }
 
-        public State(Action? enter, Action? exit, Action? run = null)
+        public State(Action enter, Action exit, Action run = null)
             : base(enter, exit)
         {
             Run = run;

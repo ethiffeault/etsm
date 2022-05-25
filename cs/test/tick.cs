@@ -6,9 +6,9 @@ namespace tick
 {
     public class State : Etsm.State
     {
-        public Action? Tick { get; private set; }
+        public Action Tick { get; private set; }
 
-        public State(Action? enter, Action? exit, Action? tick = null)
+        public State(Action enter, Action exit, Action tick = null)
             : base(enter, exit)
         {
             Tick = tick;
