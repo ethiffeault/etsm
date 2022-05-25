@@ -85,7 +85,7 @@ Execute transitions
 ```
 
 Output: " ->A  A-> ->B "\
-Sample [simple.rs](tests/simple.rs)
+Sample [main.rs](https://github.com/ethiffeault/etsm/blob/main/rust/sample/ab/src/main.rs)
 
 ## Virtual State Methods
 
@@ -153,4 +153,4 @@ fn virtual_call() {
 }
 ```
 Output: " A B "\
-Sample [virtual_call.rs](tests/virtual_call.rs)
+Sample [main.rs](https://github.com/ethiffeault/etsm/blob/main/rust/sample/virtual_call/src/main.rs)
