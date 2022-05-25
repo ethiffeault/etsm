@@ -9,8 +9,8 @@ Efficient Tiny State Machine using object callbacks. Implemented in many languag
 Implement a bare bones state machine in many languages. This library aim to be simple as possible and support only basic features: 
 
 - states on object (owner)
-- enter/exit methods
-- virtual state methods
+- optional enter/exit methods
+- virtual state user methods
 - is in
 - unrestricted transitions
 - no runtime allocation
