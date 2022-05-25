@@ -5,8 +5,8 @@ Tiny state machine for go, see [etsm](https://github.com/ethiffeault/etsm)
 
 # Install
 
-Drop this file into your project [etsm.go](https://github.com/ethiffeault/etsm/blob/main/go/etsm/etsm.go)
-or
+Drop this file into your project [etsm.go](https://github.com/ethiffeault/etsm/blob/main/go/etsm/etsm.go)\
+or\
 Add this package to your go.mod
 
 # Description
