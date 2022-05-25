@@ -19,6 +19,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - [rust](rust/etsm) 
 - [c#](cs)
 - [go](go)
+- [python](python/etsm)
 
 # Why
 For small project or need of small and simple state machine.
