@@ -1,5 +1,4 @@
 [![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
-[![made-with-rust](https://img.shields.io/badge/Made%20with-Rust-1f425f.svg)](https://www.rust-lang.org/)
 
 # Rust etsm
 Tiny state machine for rust, see [etsm](../../../../)
