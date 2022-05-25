@@ -17,10 +17,10 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - no runtime allocation
 
 # Languages
-- [rust](rust/etsm) 
 - [c#](cs)
 - [go](go)
 - [python](python/etsm)
+- [rust](rust/etsm) 
 
 # Why
 For small and simple state machine needs. Source code for each language is very small, easy to copy/paste...
