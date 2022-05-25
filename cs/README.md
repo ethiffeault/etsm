@@ -32,7 +32,7 @@ Add this file directly into your project: [etsm](https://github.com/ethiffeault/
 
 ## Simple
 Declare state machine and state in your class
-```
+```cs
     public class Foo
     {
         private StateMachine<State> stateMachine;
@@ -42,7 +42,7 @@ Declare state machine and state in your class
 ```
 
 Create them in the constructor and bind enter/exit
-```
+```cs
         public Foo()
         {
             stateMachine = new StateMachine<State>();
@@ -52,7 +52,7 @@ Create them in the constructor and bind enter/exit
 ```
 
 Make your callback methods
-```
+```cs
         void EnterA()
         {
             System.Console.Write(" ->A ");
@@ -70,7 +70,7 @@ Make your callback methods
 ```
 
 Execute transitions
-```
+```cs
         public void Run()
         {
             stateMachine.Transition(stateA);
@@ -85,7 +85,7 @@ full sample [here](https://github.com/ethiffeault/etsm/blob/main/cs/test/simple.
 
 ## Virtual State Methods
 
-```
+```cs
     // Define your own state and add Run Action.
     public class State : Etsm.State
     {
