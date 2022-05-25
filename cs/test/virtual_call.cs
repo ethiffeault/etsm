@@ -4,58 +4,71 @@ using System;
 
 namespace virtual_call
 {
-    // Define your own state and add Run Action.
     public class State : Etsm.State
     {
-        public Action Run { get; private set; }
+        public Action Tick { get; private set; }
 
-        public State(Action enter, Action exit, Action run = null)
+        public State(Action enter, Action exit, Action tick = null)
             : base(enter, exit)
         {
-            Run = run;
+            Tick = tick;
         }
     }
 
     public class Foo
     {
-        private StateMachine<State> stateMachine;
-        private State stateA;
-        private State stateB;
+        private StateMachine<State> sm;
+        private State a;
+        private State b;
+
+        private int tickA = 0;
+        private int tickB = 0;
 
         public Foo()
         {
-            stateMachine = new StateMachine<State>();
-            stateA = new State(null, null, RunA);
-            stateB = new State(null, null, RunB);
+            sm = new StateMachine<State>();
+            a = new State(null, null, TickA);
+            b = new State(null, null, TickB);
         }
 
-        private void RunA()
+        private void TickA()
         {
-            Console.Write(" A ");
+            ++tickA;
         }
 
-        private void RunB()
+        private void TickB()
         {
-            Console.Write(" B ");
-        }
-
-        // call run on the current state
-        private void Run()
-        {
-            stateMachine.CurrentState?.Run?.Invoke();
+            ++tickB;
         }
 
         public void Test()
         {
-            stateMachine.Transition(stateA);
-            Run();
-            stateMachine.Transition(stateB);
-            Run();
+            Assert.IsTrue(sm.IsIn(null));
+            Assert.AreEqual(0, tickA);
+            Assert.AreEqual(0, tickB);
+
+            sm.Transition(a);
+            Assert.IsTrue(sm.IsIn(a));
+            sm.CurrentState?.Tick?.Invoke();
+            Assert.AreEqual(1, tickA);
+            Assert.AreEqual(0, tickB);
+
+            sm.Transition(b);
+            Assert.IsTrue(sm.IsIn(b));
+            sm.CurrentState?.Tick?.Invoke();
+            Assert.AreEqual(1, tickA);
+            Assert.AreEqual(1, tickB);
+
+            sm.Transition(null);
+            Assert.IsTrue(sm.IsIn(null));
+            sm.CurrentState?.Tick?.Invoke();
+            Assert.AreEqual(1, tickA);
+            Assert.AreEqual(1, tickB);
         }
     }
 
     [TestClass]
-    public class virtual_call
+    public class tick
     {
         [TestMethod]
         public void Test()

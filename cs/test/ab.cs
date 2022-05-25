@@ -5,73 +5,73 @@ namespace ab
 {
     public class Foo
     {
-        private StateMachine<State> stateMachine;
-        private State stateA;
-        private State stateB;
+        private StateMachine<State> sm;
+        private State a;
+        private State b;
 
-        private int enterStateA = 0;
-        private int exitStateA = 0;
-        private int enterStateB = 0;
-        private int exitStateB = 0;
+        private int enterA = 0;
+        private int exitA = 0;
+        private int enterB = 0;
+        private int exitB = 0;
 
         public Foo()
         {
-            stateMachine = new StateMachine<State>();
-            stateA = new State(EnterA, ExitA);
-            stateB = new State(EnterB, ExitB);
+            sm = new StateMachine<State>();
+            a = new State(EnterA, ExitA);
+            b = new State(EnterB, ExitB);
         }
 
         // Simple simulation that make transition using this pattern:
         //    None -> A -> B -> None
         public void Simulation()
         {
-            if (stateMachine.IsIn(null))
-                stateMachine.Transition(stateA);
-            else if (stateMachine.IsIn(stateA))
-                stateMachine.Transition(stateB);
-            else if (stateMachine.IsIn(stateB))
-                stateMachine.Transition(null);
+            if (sm.IsIn(null))
+                sm.Transition(a);
+            else if (sm.IsIn(a))
+                sm.Transition(b);
+            else if (sm.IsIn(b))
+                sm.Transition(null);
         }
 
         void EnterA()
         {
-            enterStateA++;
+            enterA++;
         }
 
         void ExitA()
         {
-            exitStateA++;
+            exitA++;
         }
 
         void EnterB()
         {
-            enterStateB++;
+            enterB++;
         }
 
         void ExitB()
         {
-            exitStateB++;
+            exitB++;
         }
 
         public void Test()
         {
             for (int i = 1; i < 3; i++)
             {
-                Assert.IsTrue(stateMachine.IsIn(null));
+                Assert.IsTrue(sm.IsIn(null));
 
                 Simulation();
-                Assert.IsTrue(stateMachine.IsIn(stateA));
+                Assert.IsTrue(sm.IsIn(a));
 
                 Simulation();
-                Assert.IsTrue(stateMachine.IsIn(stateB));
+                Assert.IsTrue(sm.IsIn(b));
 
                 Simulation();
-                Assert.IsTrue(stateMachine.IsIn(null));
+                Assert.IsTrue(sm.IsIn(null));
 
-                Assert.AreEqual(i, enterStateA);
-                Assert.AreEqual(i, exitStateA);
-                Assert.AreEqual(i, enterStateB);
-                Assert.AreEqual(i, exitStateB);
+                Assert.AreEqual(i, enterA);
+                Assert.AreEqual(i, exitA);
+                Assert.AreEqual(i, enterB);
+                Assert.AreEqual(i, exitB);
             }
         }
     }
