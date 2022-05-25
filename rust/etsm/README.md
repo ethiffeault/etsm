@@ -85,8 +85,7 @@ Execute transitions
 ```
 
 Output: " ->A  A-> ->B "
-
-full sample [here](tests/simple.rs)
+Sample [simple.rs](tests/simple.rs)
 
 ## Virtual State Methods
 
@@ -151,8 +150,7 @@ fn virtual_call() {
 
     transition!(&mut foo, state_machine, Some(State::B));
     foo.run();
-
-    // output: A B
 }
 ```
-full sample [here](tests/virtual_call.rs)
+Output: " A B "
+Sample [virtual_call.rs](tests/virtual_call.rs)
