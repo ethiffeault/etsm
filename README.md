@@ -24,3 +24,4 @@ Depend on the language, etsm is designed to be a one file dropper in your projec
 # Languages
 - [rust](rust/etsm) 
 - [c#](cs)
+- [go](go)
