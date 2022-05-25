@@ -57,7 +57,7 @@ foo = Foo()
 foo.Run()
 ```
 Output : " ->A  A->  ->B "
-Sample: [simple.py](https://github.com/ethiffeault/etsm/blob/main/python/sample/simple.py)
+Sample: [ab.py](https://github.com/ethiffeault/etsm/blob/main/python/sample/ab.py)
 
 ## Virtual State Methods
 
