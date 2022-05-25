@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="etsm",                            
-    version="0.2.0",                        
+    version="0.2.1",                        
     author="Eric Thiffeault",               
     description="Efficient Tiny State Machine using object callbacks.",
     long_description=long_description,      
