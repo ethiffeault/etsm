@@ -23,8 +23,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - [python](python/etsm)
 
 # Why
-For small project or need of small and simple state machine.
+For of small and simple state machine needs. Source for each language is very small, easy to copy/paste...
 
 # Install
-Depend on the language, etsm is designed to be a one file dropper in your project. A package might also be available.
-
+Depend on the language, etsm is designed to be a one file dropper in your project. But a package might also be available.
