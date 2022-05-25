@@ -1,45 +1,11 @@
-package main
+package etsm
 
 import (
-	"fmt"
 	"strings"
+	"testing"
 )
 
-type State interface {
-}
-
-type Enter interface {
-	Enter()
-}
-
-type Exit interface {
-	Exit()
-}
-
-type StateMachine struct {
-	current State
-}
-
-func (sm *StateMachine) Transition(state State) {
-	if sm.current != nil {
-		i, ok := sm.current.(Exit)
-		if ok {
-			i.Exit()
-		}
-	}
-	sm.current = state
-	if sm.current != nil {
-		i, ok := sm.current.(Enter)
-		if ok {
-			i.Enter()
-		}
-	}
-}
-
-func (sm *StateMachine) IsIn(state State) bool {
-	return sm.current == state
-}
-
+// State A
 type StateA struct {
 	foo *Foo
 }
@@ -55,6 +21,7 @@ func (s *StateA) Tick() {
 	s.foo.Trace(" A ")
 }
 
+// State B
 type StateB struct {
 	foo *Foo
 }
@@ -63,18 +30,21 @@ func (s *StateB) Enter() {
 	s.foo.Trace(" ->B ")
 }
 
-func (s *StateB) Exit() {
-	s.foo.Trace(" B-> ")
-}
+// don't want exit callback on state B
+// func (s *StateB) Exit() {
+// 	s.foo.Trace(" B-> ")
+// }
 
 func (s *StateB) Tick() {
 	s.foo.Trace(" B ")
 }
 
+// Tick interface, aka virual method
 type Tick interface {
 	Tick()
 }
 
+// declate the state machine owner
 type Foo struct {
 	stateA       StateA
 	stateB       StateB
@@ -85,6 +55,7 @@ type Foo struct {
 func NewFoo() *Foo {
 	f := new(Foo)
 	f.stateMachine = StateMachine{}
+	// construct all possible states
 	f.stateA = StateA{f}
 	f.stateB = StateB{f}
 	return f
@@ -95,24 +66,30 @@ func (f *Foo) Trace(s string) {
 }
 
 func (f *Foo) Tick() {
-	if f.stateMachine.current != nil {
-		tick, ok := f.stateMachine.current.(Tick)
+	if f.stateMachine.Current != nil {
+		tick, ok := f.stateMachine.Current.(Tick)
 		if ok {
 			tick.Tick()
 		}
 	}
 }
 
-func (f *Foo) Test() {
+func (f *Foo) Test(t *testing.T) {
+	f.Tick()
 	f.stateMachine.Transition(&f.stateA)
 	f.Tick()
 	f.stateMachine.Transition(&f.stateB)
 	f.Tick()
 	f.stateMachine.Transition(nil)
+	f.Tick()
+	o := f.output.String()
+	ok := " <-A  A  A->  ->B  B "
+	if o != ok {
+		t.Fatalf(`Foo.output = %q, %q, want "", error`, o, ok)
+	}
 }
 
-func main() {
+func TestFoo(t *testing.T) {
 	var foo = NewFoo()
-	foo.Test()
-	fmt.Println(foo.output.String())
+	foo.Test(t)
 }
