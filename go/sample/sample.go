@@ -41,7 +41,7 @@ func (s *StateB) Tick() {
 	s.foo.Trace(" B ")
 }
 
-// Tick interface, aks virual method
+// Tick interface, aka virual method
 type Tick interface {
 	Tick()
 }
