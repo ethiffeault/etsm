@@ -1,5 +1,5 @@
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
-[![made-with-rust](https://img.shields.io/badge/Made%20with-Rust-1f425f.svg)](https://www.rust-lang.org/)
 
 # Rust etsm
 Tiny state machine for rust, see [etsm](../../../../)
@@ -84,9 +84,8 @@ Execute transitions
     }
 ```
 
-Output: " ->A  A-> ->B "
-
-full sample [here](tests/simple.rs)
+Output: " ->A  A-> ->B "\
+Sample [simple.rs](tests/simple.rs)
 
 ## Virtual State Methods
 
@@ -151,8 +150,7 @@ fn virtual_call() {
 
     transition!(&mut foo, state_machine, Some(State::B));
     foo.run();
-
-    // output: A B
 }
 ```
-full sample [here](tests/virtual_call.rs)
+Output: " A B "\
+Sample [virtual_call.rs](tests/virtual_call.rs)
