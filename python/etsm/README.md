@@ -56,7 +56,7 @@ class Foo:
 foo = Foo()
 foo.Run()
 ```
-Output : " ->A  A->  ->B "
+Output : " ->A  A->  ->B "\
 Sample: [ab.py](https://github.com/ethiffeault/etsm/blob/main/python/sample/ab.py)
 
 ## Virtual State Methods
@@ -98,5 +98,5 @@ class Foo:
 foo = Foo()
 foo.Run()
 ```
-Output: " A  B "
+Output: " A  B "\
 Sample: [virtual_call.py](https://github.com/ethiffeault/etsm/blob/main/python/sample/virtual_call.py)
