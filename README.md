@@ -15,12 +15,14 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - unrestricted transitions
 - no runtime allocation
 
+# Languages
+- [rust](rust/etsm) 
+- [c#](cs)
+- [go](go)
+
 # Why
 For small project or need of small and simple state machine.
 
 # Install
 Depend on the language, etsm is designed to be a one file dropper in your project. A package might also be available.
 
-# Languages
-- [rust](rust/etsm) 
-- [c#](cs)
