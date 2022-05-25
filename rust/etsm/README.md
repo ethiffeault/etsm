@@ -84,7 +84,7 @@ Execute transitions
     }
 ```
 
-Output: " ->A  A-> ->B "
+Output: " ->A  A-> ->B "\
 Sample [simple.rs](tests/simple.rs)
 
 ## Virtual State Methods
@@ -152,5 +152,5 @@ fn virtual_call() {
     foo.run();
 }
 ```
-Output: " A B "
+Output: " A B "\
 Sample [virtual_call.rs](tests/virtual_call.rs)
