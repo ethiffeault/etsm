@@ -15,17 +15,132 @@ Implement a bare bones state machine in many languages. This library aim to be s
 
 # Install
 
+copy this file into your project: [etsm.h](https://github.com/ethiffeault/etsm/blob/main/c%2B%2B/etsm/etsm.h)
 ```cpp
-  #include <etsm.h>
+#include <etsm.h>
 ```  
 # Example
 
 ## Simple
 
-Output: \
+```c++
+#include <etsm.h>
+#include <iostream>
+
+using namespace etsm;
+
+class Foo
+{
+public:
+    Foo()
+        : sm(this),
+        a(&Foo::EnterA, &Foo::ExitA),
+        b(&Foo::EnterB, nullptr)
+    {
+    }
+
+    void Run()
+    {
+        sm.Transition(&a);
+        sm.Transition(&b);
+        sm.Transition(nullptr);
+        std::cout << output << std::endl;
+    }
+
+private:
+    StateMachine<Foo> sm;
+    State<Foo> a;
+    State<Foo> b;
+    std::string output;
+
+    void EnterA() { output += " ->A "; }
+    void ExitA() { output += " A-> "; }
+    void EnterB() { output += " ->B "; }
+};
+
+int main()
+{
+    Foo foo;
+    foo.Run();
+}
+```
+
+Output: " ->A  A->  ->B "\
 Sample: [ab](https://github.com/ethiffeault/etsm/tree/main/c%2B%2B/sample/ab)
 
 ## Virtual State Methods
 
-Output: \
+You need to define your own state (FooState) and add a method pointer, you may use it to add whatever you want, see this as a static state data.
+Then, query the current state and use it (sm.GetCurrent()).
+
+```c++
+#include <etsm.h>
+#include <iostream>
+
+using namespace etsm;
+
+class Foo;
+
+class FooState : public State<Foo>
+{
+public:
+    FooState(Method enter, Method exit, Method tick = nullptr)
+        : State<Foo>(enter, exit),
+        tick(tick)
+    {}
+
+    void Tick(Foo* owner)
+    {
+        if (tick != nullptr)
+            (owner->*tick)();
+    }
+
+private:
+    Method tick;
+};
+
+class Foo
+{
+public:
+    Foo()
+        : sm(this),
+        a(nullptr, nullptr, &Foo::TickA),
+        b(nullptr, nullptr, &Foo::TickB)
+    {}
+
+    void Tick()
+    {
+        if (sm.GetCurrent())
+            sm.GetCurrent()->Tick(this);
+    }
+
+    void Run()
+    {
+        Tick();
+        sm.Transition(&a);
+        Tick();
+        sm.Transition(&b);
+        Tick();
+        sm.Transition(nullptr);
+        std::cout << output << std::endl;
+    }
+
+private:
+    StateMachine<Foo, FooState> sm;
+    FooState a;
+    FooState b;
+    std::string output;
+
+    void TickA() { output += " A "; }
+    void TickB() { output += " B "; }
+};
+
+int main()
+{
+    Foo foo;
+    foo.Run();
+}
+```
+
+Output: " A  B "\
 Sample: [virtual_call](https://github.com/ethiffeault/etsm/tree/main/c%2B%2B/sample/virtual_call)
