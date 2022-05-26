@@ -25,7 +25,7 @@ import it
 import etsm
 ```
 or\
-include this file into your project [etsm.py](https://github.com/ethiffeault/etsm/blob/main/python/etsm/src/etsm.py)\
+include this file into your project [etsm.py](https://github.com/ethiffeault/etsm/blob/main/python/etsm/src/etsm.py)
 
 # Example
 
