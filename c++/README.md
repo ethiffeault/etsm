@@ -23,9 +23,9 @@ Implement a bare bones state machine in many languages. This library aim to be s
 ## Simple
 
 Output: 
-Sample: [here]()
+Sample: [ab](https://github.com/ethiffeault/etsm/tree/main/c%2B%2B/sample/ab)
 
 ## Virtual State Methods
 
 Output: 
-Sample: [here]()
+Sample: [virtual_call](https://github.com/ethiffeault/etsm/tree/main/c%2B%2B/sample/virtual_call)
