@@ -17,6 +17,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - no runtime allocation
 
 # Languages
+- [c++](c++)
 - [c#](cs)
 - [go](go)
 - [python](python/etsm)
