@@ -15,6 +15,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 
 # Install
 
+copy this file into your project: [etsm.h](https://github.com/ethiffeault/etsm/blob/main/c%2B%2B/etsm/etsm.h)
 ```cpp
 #include <etsm.h>
 ```  
