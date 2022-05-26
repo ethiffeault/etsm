@@ -24,68 +24,68 @@
 
 namespace etsm {
 
-	template<typename OWNER>
-	class State
-	{
+    template<typename OWNER>
+    class State
+    {
 
-	public:
-		typedef void (OWNER::* Method)();
+    public:
+        typedef void (OWNER::* Method)();
 
-		State(Method enter, Method exit) 
-		{
-			this->enter = enter;
-			this->exit = exit;
-		}
+        State(Method enter, Method exit)
+        {
+            this->enter = enter;
+            this->exit = exit;
+        }
 
-		void Enter(OWNER* owner) const
-		{
-			if (enter != nullptr)
-				(owner->*enter)();
-		}
+        void Enter(OWNER* owner) const
+        {
+            if (enter != nullptr)
+                (owner->*enter)();
+        }
 
-		void Exit(OWNER* owner) const
-		{
-			if (exit != nullptr)
-				(owner->*exit)();
-		}
+        void Exit(OWNER* owner) const
+        {
+            if (exit != nullptr)
+                (owner->*exit)();
+        }
 
-	private:
+    private:
 
-		Method enter;
-		Method exit;
-	};
+        Method enter;
+        Method exit;
+    };
 
-	template<typename OWNER, typename STATE = State<OWNER>>
-	class StateMachine
-	{
+    template<typename OWNER, typename STATE = State<OWNER>>
+    class StateMachine
+    {
 
-	public:
+    public:
 
-		StateMachine(OWNER* owner)
-			: owner(owner)
-		{}
+        StateMachine(OWNER* owner)
+            : owner(owner)
+        {}
 
-		STATE* GetCurrent()
-		{
-			return current;
-		}
+        STATE* GetCurrent()
+        {
+            return current;
+        }
 
-		void Transition(STATE* state)
-		{
-			if (current != nullptr)
-				current->Exit(owner);
-			current = state;
-			if (current != nullptr)
-				current->Enter(owner);
-		}
+        void Transition(STATE* state)
+        {
+            if (current != nullptr)
+                current->Exit(owner);
+            current = state;
+            if (current != nullptr)
+                current->Enter(owner);
+        }
 
-		bool IsIn(const STATE* state)
-		{
-			return current == state;
-		}
+        bool IsIn(const STATE* state)
+        {
+            return current == state;
+        }
 
-	private:
-		STATE* current = nullptr;
-		OWNER* owner = nullptr;
-	};
+    private:
+        STATE* current = nullptr;
+        OWNER* owner = nullptr;
+    };
 }

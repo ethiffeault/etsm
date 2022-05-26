@@ -13,8 +13,8 @@ namespace test_ab
     public:
         Foo()
             : sm(this),
-              a(&Foo::EnterA, &Foo::ExitA),
-              b(&Foo::EnterB, nullptr)
+            a(&Foo::EnterA, &Foo::ExitA),
+            b(&Foo::EnterB, nullptr)
         {
         }
 
@@ -51,7 +51,7 @@ namespace test_virtual_call
     public:
         FooState(Method enter, Method exit, Method tick = nullptr)
             : State<Foo>(enter, exit),
-              tick(tick)
+            tick(tick)
         {}
 
         void Tick(Foo* owner)
