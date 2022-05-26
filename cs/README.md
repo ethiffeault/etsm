@@ -79,9 +79,8 @@ Execute transitions
         }
 ```
 
-Output: " ->A  A-> ->B "
-
-full sample [here](https://github.com/ethiffeault/etsm/blob/main/cs/test/simple.cs)
+Output: " ->A  A-> ->B "\
+Sample: [ab](https://github.com/ethiffeault/etsm/tree/main/cs/sample/ab)
 
 ## Virtual State Methods
 
@@ -137,4 +136,4 @@ full sample [here](https://github.com/ethiffeault/etsm/blob/main/cs/test/simple.
     }
 ```
 Output: " A   B "\
-full sample [here](https://github.com/ethiffeault/etsm/blob/main/cs/test/virtual_call.cs)
+Sample: [virtual_call](https://github.com/ethiffeault/etsm/tree/main/cs/sample/virtual_call)
