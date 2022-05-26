@@ -39,11 +39,26 @@ type Exit interface {
 
 // StateMachine, to embed into a user struct
 type StateMachine struct {
-	Current State
+	Current      State
+	inTransition bool
+}
+
+func NewStateMachine() StateMachine {
+	sm := StateMachine{}
+	sm.Current = nil
+	sm.inTransition = false
+	return sm
 }
 
 // call to make transition from state to state, state might be nil
-func (sm *StateMachine) Transition(state State) {
+func (sm *StateMachine) Transition(state State) bool {
+
+	if sm.inTransition {
+		return false
+	}
+
+	sm.inTransition = true
+
 	if sm.Current != nil {
 		i, ok := sm.Current.(Exit)
 		if ok {
@@ -57,6 +72,9 @@ func (sm *StateMachine) Transition(state State) {
 			i.Enter()
 		}
 	}
+
+	sm.inTransition = false
+	return true
 }
 
 // check if a state machine is in a state,

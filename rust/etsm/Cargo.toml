@@ -1,6 +1,6 @@
 [package]
 name = "etsm"
-version = "0.2.0"
+version = "0.5.0"
 edition = "2021"
 authors = ["Eric Thiffeault <ethiffeault@gmail.com>"]
 description = "Efficient Tiny State Machine using object callbacks."

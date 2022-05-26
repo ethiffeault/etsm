@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+var test *testing.T
+
 // State A
 type StateA struct {
 	foo *Foo
@@ -12,9 +14,15 @@ type StateA struct {
 
 func (s *StateA) Enter() {
 	s.foo.Trace(" <-A ")
+	if s.foo.sm.Transition(s.foo.a) {
+		test.Fatalf(`Cannot do transition inside Enter/Exit`)
+	}
 }
 func (s *StateA) Exit() {
 	s.foo.Trace(" A-> ")
+	if s.foo.sm.Transition(s.foo.a) {
+		test.Fatalf(`Cannot do transition inside Enter/Exit`)
+	}
 }
 
 func (s *StateA) Tick() {
@@ -28,6 +36,9 @@ type StateB struct {
 
 func (s *StateB) Enter() {
 	s.foo.Trace(" ->B ")
+	if s.foo.sm.Transition(s.foo.a) {
+		test.Fatalf(`Cannot do transition inside Enter/Exit`)
+	}
 }
 
 // don't want exit callback on state B
@@ -46,18 +57,18 @@ type Tick interface {
 
 // declate the state machine owner
 type Foo struct {
-	stateA       StateA
-	stateB       StateB
-	stateMachine StateMachine
-	output       strings.Builder
+	a      StateA
+	b      StateB
+	sm     StateMachine
+	output strings.Builder
 }
 
 func NewFoo() *Foo {
 	f := new(Foo)
-	f.stateMachine = StateMachine{}
+	f.sm = NewStateMachine()
 	// construct all possible states
-	f.stateA = StateA{f}
-	f.stateB = StateB{f}
+	f.a = StateA{f}
+	f.b = StateB{f}
 	return f
 }
 
@@ -66,30 +77,31 @@ func (f *Foo) Trace(s string) {
 }
 
 func (f *Foo) Tick() {
-	if f.stateMachine.Current != nil {
-		tick, ok := f.stateMachine.Current.(Tick)
+	if f.sm.Current != nil {
+		tick, ok := f.sm.Current.(Tick)
 		if ok {
 			tick.Tick()
 		}
 	}
 }
 
-func (f *Foo) Test(t *testing.T) {
+func (f *Foo) Test() {
 	f.Tick()
-	f.stateMachine.Transition(&f.stateA)
+	f.sm.Transition(&f.a)
 	f.Tick()
-	f.stateMachine.Transition(&f.stateB)
+	f.sm.Transition(&f.b)
 	f.Tick()
-	f.stateMachine.Transition(nil)
+	f.sm.Transition(nil)
 	f.Tick()
 	o := f.output.String()
 	ok := " <-A  A  A->  ->B  B "
 	if o != ok {
-		t.Fatalf(`Foo.output = %q, %q, want "", error`, o, ok)
+		test.Fatalf(`Foo.output = %q, %q, want "", error`, o, ok)
 	}
 }
 
 func TestFoo(t *testing.T) {
+	test = t
 	var foo = NewFoo()
-	foo.Test(t)
+	foo.Test()
 }

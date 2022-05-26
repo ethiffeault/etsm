@@ -100,12 +100,14 @@ pub trait StateSelector<OWNER, STATEDATA = EmptyStateData> {
 
 pub struct StateMachine<STATE> {
     pub current_state: Option<STATE>,
+    pub in_transition : bool
 }
 
 impl<STATE: PartialEq> StateMachine<STATE> {
     pub fn new() -> StateMachine<STATE> {
         StateMachine {
             current_state: None,
+            in_transition: false
         }
     }
 
@@ -191,18 +193,29 @@ macro_rules! state_machine {
 #[macro_export]
 macro_rules! transition {
     ($owner:expr, $state_machine:ident , $state:expr) => {{
-        if let Some(s) = &$owner.state_machine.current_state {
-            if let Some(c) = s.select().exit {
-                (c)($owner);
-            }
-        }
 
-        $owner.$state_machine.current_state = $state;
+        let mut result = false;
+        if ($owner.$state_machine.in_transition == false ) {
 
-        if let Some(s) = &$owner.state_machine.current_state {
-            if let Some(c) = s.select().enter {
-                (c)($owner);
+            $owner.$state_machine.in_transition = true;
+            
+            if let Some(s) = &$owner.state_machine.current_state {
+                if let Some(c) = s.select().exit {
+                    (c)($owner);
+                }
             }
-        }
+
+            $owner.$state_machine.current_state = $state;
+
+            if let Some(s) = &$owner.state_machine.current_state {
+                if let Some(c) = s.select().enter {
+                    (c)($owner);
+                }
+            }
+
+            $owner.$state_machine.in_transition = false;
+            result = true;
+        }   
+        result
     }};
 }

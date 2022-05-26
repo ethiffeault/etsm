@@ -56,10 +56,17 @@ namespace Etsm
 
     public class StateMachine<STATE> where STATE : class, IState
     {
+        private bool inTransition = false;
         public STATE CurrentState { get; private set; }
 
-        public void Transition(STATE state)
+        public bool Transition(STATE state)
         {
+            // cannot do transition inside Enter/Exit
+            if (inTransition)
+                return false;
+
+            inTransition = true;
+
             if (CurrentState != null)
                 CurrentState.Exit();
 
@@ -67,6 +74,10 @@ namespace Etsm
 
             if (CurrentState != null)
                 CurrentState.Enter();
+
+            inTransition = false;
+
+            return true;
         }
 
         public bool IsIn(STATE s)

@@ -31,13 +31,24 @@ class StateMachine:
     def __init__(self, owner):
         self.Owner = owner
         self.Current = None
+        self.__inTransition = False
 
-    def Transition(self, state) :
+    def Transition(self, state) -> bool :
+        if ( self.__inTransition):
+            return False;
+
+        self.__inTransition = True
+
         if (self.Current != None and self.Current.Exit != None):
             self.Current.Exit(self.Owner)
+
         self.Current = state
+
         if (self.Current != None and self.Current.Enter != None):
             self.Current.Enter(self.Owner)
+
+        self.__inTransition = False
+        return True
 
     def IsIn(self, state):
         return self.Current == state

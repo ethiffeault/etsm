@@ -1,6 +1,8 @@
 import unittest
 import etsm
 
+test = None
+
 class FooState(etsm.State):
     def __init__(self, enter, exit, tick):
         super().__init__(enter, exit)
@@ -15,19 +17,27 @@ class Foo:
 
     def EnterA(self):
         self.__output += ' ->A '
+        global test
+        test.assertEqual( self.__sm.Transition(self.__a), False)
 
     def ExitA(self):
         self.__output += ' A-> '
+        global test
+        test.assertEqual( self.__sm.Transition(self.__a), False)
 
     def TickA(self):
         self.__output += ' A '
 
     def EnterB(self):
         self.__output += ' ->B '
+        global test
+        test.assertEqual( self.__sm.Transition(self.__a), False)
 
     # no exit for B
     # def ExitB(self):
     #     self.__output += ' B-> '
+    #     global test
+    #     test.assertEqual( self.__sm.Transition(self.__a), False)
 
     def TickB(self):
         self.__output += ' B '
@@ -37,7 +47,8 @@ class Foo:
         if ( self.__sm.Current != None ):
             self.__sm.Current.Tick(self)
 
-    def Test(self, test):
+    def Test(self):
+        global test
         self.Tick();
         self.__sm.Transition(self.__a);
         test.assertEqual(self.__sm.IsIn(self.__a), True)
@@ -52,8 +63,10 @@ class Foo:
 class TestMethods(unittest.TestCase):
 
     def test_sample(self):
+        global test
+        test = self
         foo = Foo()
-        foo.Test(self)
+        foo.Test()
 
 if __name__ == '__main__':
     unittest.main()

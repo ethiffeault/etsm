@@ -36,9 +36,23 @@ namespace test_ab
         State<Foo> b;
         std::string output;
 
-        void EnterA() { output += " ->A "; }
-        void ExitA() { output += " A-> "; }
-        void EnterB() { output += " ->B "; }
+        void EnterA() 
+        { 
+            output += " ->A "; 
+            assert(sm.Transition(&a) == false); 
+        }
+
+        void ExitA() 
+        { 
+            output += " A-> ";  
+            assert(sm.Transition(&b) == false); 
+        }
+
+        void EnterB() 
+        { 
+            output += " ->B "; 
+            assert(sm.Transition(&a) == false); 
+        }
     };
 }
 

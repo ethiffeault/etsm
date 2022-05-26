@@ -65,13 +65,24 @@ namespace etsm {
             return current;
         }
 
-        void Transition(STATE* state)
+        bool Transition(STATE* state)
         {
+            // cannot do transition inside Enter/Exit
+            if (inTransition)
+                return false;
+
+            inTransition = true;
             if (current != nullptr)
                 current->Exit(owner);
+
             current = state;
+
             if (current != nullptr)
                 current->Enter(owner);
+
+            inTransition = false;
+
+            return true;
         }
 
         bool IsIn(const STATE* state)
@@ -82,5 +93,6 @@ namespace etsm {
     private:
         STATE* current = nullptr;
         OWNER* owner = nullptr;
+        bool inTransition = false;
     };
 }

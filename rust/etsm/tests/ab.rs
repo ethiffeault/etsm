@@ -47,14 +47,17 @@ impl Foo {
 
     fn enter_a(&mut self) {
         self.state_a_enter += 1;
+        assert!(transition!(self, state_machine, Some(State::A)) == false)
     }
 
     fn exit_a(&mut self) {
         self.state_a_exit += 1;
+        assert!(transition!(self, state_machine, Some(State::A)) == false)
     }
 
     fn enter_b(&mut self) {
         self.state_b_enter += 1;
+        assert!(transition!(self, state_machine, Some(State::A)) == false)
     }
 
     fn exit_b(&mut self) {

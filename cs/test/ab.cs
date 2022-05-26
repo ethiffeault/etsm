@@ -36,21 +36,25 @@ namespace ab
         void EnterA()
         {
             enterA++;
+            Assert.IsFalse(sm.Transition(a));
         }
 
         void ExitA()
         {
             exitA++;
+            Assert.IsFalse(sm.Transition(b));
         }
 
         void EnterB()
         {
             enterB++;
+            Assert.IsFalse(sm.Transition(a));
         }
 
         void ExitB()
         {
             exitB++;
+            Assert.IsFalse(sm.Transition(a));
         }
 
         public void Test()
