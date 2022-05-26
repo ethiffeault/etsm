@@ -69,6 +69,9 @@ Sample: [ab](https://github.com/ethiffeault/etsm/tree/main/c%2B%2B/sample/ab)
 
 ## Virtual State Methods
 
+You need to define your own state (FooState) and add a method pointer, you may use it to add whatever your want, see this as a static state data.
+Then, query the current state and use it (sm.GetCurrent()).
+
 ```c++
 #include <etsm.h>
 #include <iostream>
