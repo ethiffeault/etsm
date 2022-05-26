@@ -31,10 +31,9 @@ namespace etsm {
         typedef void (OWNER::* Method)();
 
         State(Method enter, Method exit)
-        {
-            this->enter = enter;
-            this->exit = exit;
-        }
+            : enter(enter),
+              exit(exit)
+        {}
 
         void Enter(OWNER* owner) const
         {
