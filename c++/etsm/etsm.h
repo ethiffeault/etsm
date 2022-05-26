@@ -27,7 +27,6 @@ namespace etsm {
     template<typename OWNER>
     class State
     {
-
     public:
         typedef void (OWNER::* Method)();
 
@@ -50,7 +49,6 @@ namespace etsm {
         }
 
     private:
-
         Method enter;
         Method exit;
     };
@@ -58,9 +56,7 @@ namespace etsm {
     template<typename OWNER, typename STATE = State<OWNER>>
     class StateMachine
     {
-
     public:
-
         StateMachine(OWNER* owner)
             : owner(owner)
         {}
