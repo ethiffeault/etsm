@@ -16,7 +16,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 # Install
 
 ```cpp
-  #include <etsm.h>
+#include <etsm.h>
 ```  
 # Example
 
