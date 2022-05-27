@@ -3,6 +3,7 @@
 [![](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
 [![](https://badge.fury.io/py/etsm.svg)](https://badge.fury.io/py/etsm)
 [![](https://badge.fury.io/rb/etsm.svg)](https://badge.fury.io/rb/etsm)
+[![npm version](https://badge.fury.io/js/etsm.svg)](https://badge.fury.io/js/etsm)
 
 # etsm
 Efficient Tiny State Machine using object callbacks. Implemented in many languages. 
