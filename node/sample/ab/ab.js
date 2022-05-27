@@ -26,7 +26,6 @@ class Foo {
     // }
 
     Test() {
-        
         this.sm.Transition(this.a);
         this.sm.Transition(this.b);
         this.sm.Transition(null);
