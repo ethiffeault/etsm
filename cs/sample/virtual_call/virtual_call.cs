@@ -39,7 +39,7 @@ public class Foo
         Console.Write(" B ");
     }
 
-    // call run on the current state
+    // call Tick on the current state
     private void Tick()
     {
         sm.CurrentState?.Tick?.Invoke();
