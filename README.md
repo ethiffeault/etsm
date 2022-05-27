@@ -1,8 +1,8 @@
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![NuGet](https://img.shields.io/nuget/v/etsm.svg)](https://www.nuget.org/packages/etsm)
-[![Version](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
-[![PyPI version](https://badge.fury.io/py/etsm.svg)](https://badge.fury.io/py/etsm)
-[![Gem Version](https://badge.fury.io/rb/etsm.svg)](https://badge.fury.io/rb/etsm)
+[![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![](https://img.shields.io/nuget/v/etsm.svg)](https://www.nuget.org/packages/etsm)
+[![](https://img.shields.io/crates/v/etsm.svg)](https://crates.io/crates/etsm)
+[![](https://badge.fury.io/py/etsm.svg)](https://badge.fury.io/py/etsm)
+[![](https://badge.fury.io/rb/etsm.svg)](https://badge.fury.io/rb/etsm)
 
 # etsm
 Efficient Tiny State Machine using object callbacks. Implemented in many languages. 
