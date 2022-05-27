@@ -71,7 +71,7 @@ public class Ab
 ```
 
 Output: " ->A  A-> ->B "\
-Sample: [ab]()
+Sample: [ab](https://github.com/ethiffeault/etsm/blob/main/java/sample/ab/src/main/java/com/sample/ab/Ab.java)
 
 ## Virtual State Methods
 
@@ -143,4 +143,4 @@ public class VirtualCall
 ```
 
 Output: " A   B "\
-Sample: [virtual_call]()
+Sample: [virtual_call](https://github.com/ethiffeault/etsm/blob/main/java/sample/virtual_call/src/main/java/com/sample/ab/VirtualCall.java)
