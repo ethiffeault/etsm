@@ -1,4 +1,4 @@
-package com.sample.ab;
+package com.sample.virtual_call;
 
 import com.etsm.*;
 
