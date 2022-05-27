@@ -78,7 +78,7 @@ foo.Test();
 ```
 
 Output: " ->A  A-> ->B "\
-Sample: [ab]()
+Sample: [ab](https://github.com/ethiffeault/etsm/blob/main/node/sample/virtual_call/ab.js)
 
 ## Virtual State Methods
 
@@ -131,4 +131,4 @@ foo.Test();
 ```
 
 Output: " A   B "\
-Sample: [virtual_call]()
+Sample: [virtual_call](https://github.com/ethiffeault/etsm/blob/main/node/sample/virtual_call/virtual_call.js)
