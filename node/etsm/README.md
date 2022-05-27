@@ -1,4 +1,5 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![npm version](https://badge.fury.io/js/etsm.svg)](https://badge.fury.io/js/etsm)
 
 # node etsm
 Tiny state machine for node, see [etsm](https://github.com/ethiffeault/etsm)
