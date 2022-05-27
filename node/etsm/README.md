@@ -31,6 +31,9 @@ in your js file:
 ```node
 var etsm = require('etsm');
 //...
+
+Or simply drop this file into your codebase: [etsm.js](https://github.com/ethiffeault/etsm/blob/main/node/etsm/etsm.js)
+
 ```
 
 # Example
