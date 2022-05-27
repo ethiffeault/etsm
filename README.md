@@ -22,6 +22,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - [c++](c++)
 - [c#](cs)
 - [go](go)
+- [java](java/etsm)
 - [node](node/etsm)
 - [python](python/etsm)
 - [ruby](ruby/etsm)
