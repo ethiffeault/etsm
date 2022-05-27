@@ -15,6 +15,15 @@ Implement a bare bones state machine in many languages. This library aim to be s
 
 # Install
 
+install the gem:
+```
+gem install etsm
+```
+require etsm in your code:
+```
+require 'etsm'
+```
+
 # Example
 
 ## Simple
