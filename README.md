@@ -28,7 +28,8 @@ Implement a bare bones state machine in many languages. This library aim to be s
 - [rust](rust/etsm) 
 
 # Why
-For small and simple state machine needs. Source code for each language is very small, easy to copy/paste...
+For small and simple state machine needs. Source code for each language is very small, easy to copy/paste...\
+Also because it's funny to see how a little bit of code can be different from language to language.
 
 # Install
 Depend on the language, etsm is designed to be a one file dropper in your project. But a package might also be available.
