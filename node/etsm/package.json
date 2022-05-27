@@ -1,6 +1,6 @@
 {
   "name": "etsm",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Efficient Tiny State Machine using object callbacks.",
   "main": "etsm.js",
   "keywords": ["state", "statemachine", "finite", "fsm", "sm"],
