@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run AB",
+            "type": "Ruby",
+            "request": "launch",
+            "program": "${workspaceRoot}/test/ab.rb",
+            "showDebuggerOutput" : true
+        },
+        {
+            "name": "Run Virtual Call",
+            "type": "Ruby",
+            "request": "launch",
+            "program": "${workspaceRoot}/test/virtual_call.rb",
+            "showDebuggerOutput" : true
+        }
+    ]
+}
