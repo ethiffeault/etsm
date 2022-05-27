@@ -1,0 +1,10 @@
+{
+  "name": "virtual_call",
+  "version": "1.0.0",
+  "description": "virtual call sample for etsm",
+  "main": "virtual_call.js",
+  "license": "MIT",
+  "dependencies": {
+    "etsm": "*.*.*"
+  }  
+}

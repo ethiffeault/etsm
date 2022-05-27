@@ -1,0 +1,9 @@
+{
+  "name": "etsm",
+  "version": "0.5.1",
+  "description": "Efficient Tiny State Machine using object callbacks.",
+  "main": "etsm.js",
+  "keywords": ["state", "statemachine", "finite", "fsm", "sm"],
+  "author": "Eric Thiffeault",
+  "license": "MIT"
+}

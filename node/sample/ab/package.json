@@ -1,0 +1,10 @@
+{
+  "name": "ab",
+  "version": "1.0.0",
+  "description": "ab sample for etsm",
+  "main": "ab.js",
+  "license": "MIT",
+  "dependencies": {
+    "etsm": "*.*.*"
+  }  
+}
