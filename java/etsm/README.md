@@ -15,7 +15,9 @@ Implement a bare bones state machine in many languages. This library aim to be s
 
 # Install
 
-Or simply drop this file into your codebase: [etsm.java]()
+simply drop those files into your codebase: [etsm.java](https://github.com/ethiffeault/etsm/tree/main/java/etsm/src/main/java/com/etsm)
+
+todo: upload etsm on central repo
 
 # Example
 
