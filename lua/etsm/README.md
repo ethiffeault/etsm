@@ -15,7 +15,7 @@ Implement a bare bones state machine in many languages. This library aim to be s
 
 # Install
 
-Or simply drop this file into your codebase: [etsm.lua](https://github.com/ethiffeault/etsm/blob/main/lua/etsm/etsm.lua)
+drop this file into your codebase: [etsm.lua](https://github.com/ethiffeault/etsm/blob/main/lua/etsm/etsm.lua)
 
 # Example
 
